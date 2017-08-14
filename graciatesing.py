@@ -22,9 +22,9 @@ while stat <= limit:
     cooperate = sample(range(1, total_num + 1), int(total_num/2))
     for i in range(total_num):
         if (i + 1) in cooperate:
-            M = 'C'
-        else:
             M = 'D'
+        else:
+            M = 'C'
         Network[i] = [str(i + 1), M, 0, 'N', 0, 0, 0]#[label of node, current strategy, payoff, imitated strategy, payoff for comparison, number of times cooperated in game, number of times defected in game] 
     players = [a for a in range(total_num)] #nodes
 
@@ -130,7 +130,7 @@ while stat <= limit:
         #import pdb; pdb.set_trace()
         Graph() #calls function to run a round
         Same = True
-        for kk in range(len(Network)):#checks to see if all players have the same strategy
+        for kk in range(len(Network)): #counts how much defection and cooperation a player has made in a game
             if Network[kk][1] == 'C':
                 Network[kk][-2] += 1
             else:
@@ -182,8 +182,8 @@ if 'Cooperate' not in coding:
 if 'No Preference' not in coding:
     coding['No Preference'] = 0
 if 'Defect' not in coding:
-    coding['Defect'] = 0
-avg_payoff = avg_payoff/limit
+    coding['Defect'] = 0 
+avg_payoff = avg_payoff/limit #calculates payoff
 print("Average payoff is", avg_payoff)
 #coding = {'Defection':strategy.count('Defect'), 'Cooperation':strategy.count('Cooperate'), 'No Preference':strategy.count('No Preference')}
 
@@ -196,8 +196,7 @@ ax = df.plot(kind='bar')
 ax.set_ylabel("Probability of observing strategy")
 ax.set_xlabel("Strategy")
 ax.set_title('Probability of strategies in biological network')
-plt.show()
+plt.show() #creates bar chart of probabilities
 print(coding)
 #print("\n", strategy)
 #print("\n", Network)
-
