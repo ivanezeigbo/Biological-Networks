@@ -22,9 +22,9 @@ while stat <= limit:
     cooperate = sample(range(1, total_num + 1), int(total_num/2))
     for i in range(total_num):
         if (i + 1) in cooperate:
-            M = 'D'
-        else:
             M = 'C'
+        else:
+            M = 'D'
         Network[i] = [str(i + 1), M, 0, 'N', 0, 0, 0]#[label of node, current strategy, payoff, imitated strategy, payoff for comparison, number of times cooperated in game, number of times defected in game] 
     players = [a for a in range(total_num)] #nodes
 
